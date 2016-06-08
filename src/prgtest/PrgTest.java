@@ -16,7 +16,6 @@ public class PrgTest {
      */
     public static void main(String[] args) {
         // this is just for fun, you can find real tests in PrgTestTest
-        
         int result = threes(131);
         System.out.println("Vysledek threes je: " + result); // should be 9
         
@@ -37,9 +36,16 @@ public class PrgTest {
      */
     public static int threes(int value) {
         int counter = 0;
-        while (false /* TODO condition */) {
-            // TODO
-            System.out.println("Current value: " + value);
+        while (value != 1) {
+            int mod = value % 3;
+            if (mod == 0) {
+                value = value / 3;
+            } else if (mod == 1){
+                value = value - 1;
+            } else if (mod == 2) {
+                value = value + 1;
+            }
+            System.out.println("Value: " + value);
             counter++;
         }
         return counter;
@@ -47,7 +53,13 @@ public class PrgTest {
     
     
     public static int leastCommonMultiple(int first, int second) {
-        return 10;
+        int bigger = Math.max(first, second);
+        int smaller = Math.min(first, second);
+        int testing = bigger;
+        while (testing % smaller != 0) {
+            testing = testing + bigger;
+        }
+        return testing;
     }
     
     /**
@@ -56,7 +68,13 @@ public class PrgTest {
      * @return 1 if first fraction is bigger, -1 if second fraction is bigger and 0 if they are equal
      */
     public static int comparator(Fraction first, Fraction second) {
-        // TODO
-        return 10;
+        int lcm = leastCommonMultiple(first.getDenominator(), second.getDenominator());
+        
+        int firstNominator = (lcm / first.getDenominator()) * first.getNumerator();
+        int secondNominator = (lcm / second.getDenominator()) * second.getNumerator();
+        
+        if (firstNominator == secondNominator) return 0;
+        else return firstNominator > secondNominator ? 1 : -1;
     }
+    
 }
