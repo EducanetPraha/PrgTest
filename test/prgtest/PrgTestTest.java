@@ -25,81 +25,105 @@ public class PrgTestTest {
      * Test of threes method, of class PrgTest.
      */
     @Test
-    public void testThrees() {
-        System.out.println("threes 10 => 3");
-        int value = 10;
-        int expResult = 3;
-        int result = PrgTest.threes(value);
-        assertEquals(expResult, result);
+    public void test_isPrime() {
         
-        System.out.println("threes 3 => 1");
-        value = 3;
-        expResult = 1;
-        result = PrgTest.threes(value);
-        assertEquals(expResult, result);
+        int value = 1;
+        boolean primeResult = PrgTest.isPrime(value);
+        assertFalse(primeResult);
         
-        System.out.println("threes 21 => 5");
-        value = 21;
-        expResult = 5;
-        result = PrgTest.threes(value);
-        assertEquals(expResult, result);
+        value = 2;
+        primeResult = PrgTest.isPrime(value);
+        assertTrue(primeResult);
         
-        System.out.println("threes 131 => 9");
-        value = 131;
-        expResult = 9;
-        result = PrgTest.threes(value);
+        value = 7;
+        primeResult = PrgTest.isPrime(value);
+        assertTrue(primeResult);
+        
+        value = 12;
+        primeResult = PrgTest.isPrime(value);
+        assertFalse(primeResult);
+        
+        value = 14;
+        primeResult = PrgTest.isPrime(value);
+        assertFalse(primeResult);
+        
+        value = 97;
+        primeResult = PrgTest.isPrime(value);
+        assertTrue(primeResult);
+        
+        value = 93;
+        primeResult = PrgTest.isPrime(value);
+        assertFalse(primeResult);
+        
+    } 
+    
+    
+    @Test
+    public void test_printPrimes() {
+        int value = 1;
+        int expected = 2;
+        int result = PrgTest.printPrimes(value);
+        assertEquals(expected, result);
+        
+        
+        value = 10;
+        expected = 29;
+        result = PrgTest.printPrimes(value);
+        assertEquals(expected, result);
+        
+        value = 20;
+        expected = 71;
+        result = PrgTest.printPrimes(value);
+        assertEquals(expected, result);
+        
+    } 
+    
+    @Test
+    public void test_greatestCommonDivisor() {
+        
+        int first = 7;
+        int second = 3;
+        int expected = 1;
+        int result = PrgTest.greatestCommonDivisor(first, second);
+        assertEquals(expected, result);
+        
+        first = 36;
+        second = 24;
+        expected = 12;
+        result = PrgTest.greatestCommonDivisor(first, second);
+        assertEquals(expected, result);
+        
+        first = 104;
+        second = 36;
+        expected = 4;
+        result = PrgTest.greatestCommonDivisor(first, second);
+        assertEquals(expected, result);
+        
+        first = 4;
+        second = 12;
+        expected = 4;
+        result = PrgTest.greatestCommonDivisor(first, second);
+        assertEquals(expected, result);
+       
     }
     
     @Test
-    public void testLeastCommonMultiple() {
-        System.out.println("threes 10,5 => 10");
-        int value1 = 10;
-        int value2 = 5;
-        int expResult = 10;
-        int result = PrgTest.leastCommonMultiple(value1, value2);
-        assertEquals(expResult, result);
-               
+    public void test_simplify() {
         
-        System.out.println("threes 3,11 => 33");
-        value1 = 3;
-        value2 = 11;
-        expResult = 33;
-        result = PrgTest.leastCommonMultiple(value1, value2);
-        assertEquals(expResult, result);
+        Fraction fraction = new Fraction(2, 3);
+        Fraction expected = new Fraction(2, 3);
+        Fraction result = PrgTest.simplify(fraction);
+        assertEquals(expected, result);
         
+        fraction = new Fraction(8, 12);
+        expected = new Fraction(2, 3);
+        result = PrgTest.simplify(fraction);
+        assertEquals(expected, result);
         
-        System.out.println("threes 212,48 => 2544");
-        value1 = 212;
-        value2 = 48;
-        expResult = 2544;
-        result = PrgTest.leastCommonMultiple(value1, value2);
-        assertEquals(expResult, result);
-    }
-    
-    @Test
-    public void testComparator() {
-        System.out.println("threes 1/3,2/3 => -1");
-        Fraction value1 = new Fraction(1, 3);
-        Fraction value2 = new Fraction(2, 3);
-        int expResult = -1;
-        int result = PrgTest.comparator(value1, value2);
-        assertEquals(expResult, result);
-               
-
-        System.out.println("threes 2/3, 6/11 => 1");
-        value1 = new Fraction(2, 3);
-        value2 = new Fraction(6, 11);
-        expResult = 1;
-        result = PrgTest.comparator(value1, value2);
-        assertEquals(expResult, result);
-        
-        System.out.println("threes 15/30, 2/4 => 0");
-        value1 = new Fraction(15, 30);
-        value2 = new Fraction(2, 4);
-        expResult = 0;
-        result = PrgTest.comparator(value1, value2);
-        assertEquals(expResult, result);
-        
+        fraction = new Fraction(16, 8);
+        expected = new Fraction(2, 1);
+        result = PrgTest.simplify(fraction);
+        assertEquals(expected, result);
        
     }
     
